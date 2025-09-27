@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioGuard - Detailed Analysis Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                        url('/api/placeholder/1920/1080') center/cover no-repeat;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: rgba(18, 18, 18, 0.95);
+            border-radius: 50%;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            stroke: #4f46e5;
+        }
+
+        .report-meta {
+            background: rgba(18, 18, 18, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-item {
+            border-left: 3px solid #4f46e5;
+            padding-left: 1rem;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+        }
+
+        .download-section {
+            background: rgba(18, 18, 18, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .formats {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .format-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #4f46e5;
+            border-radius: 5px;
+            background: transparent;
+            color: #4f46e5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .format-btn.active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .report-preview {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 5px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .preview-content h3 {
+            color: #e5e7eb;
+            margin-bottom: 1rem;
+        }
+
+        .preview-content p {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .data-table th {
+            color: #e5e7eb;
+            font-weight: normal;
+        }
+
+        .data-table td {
+            color: #9ca3af;
+        }
+
+        .report-sections {
+            background: rgba(18, 18, 18, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-list {
+            list-style: none;
+        }
+
+        .section-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .section-item:hover {
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .section-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            stroke: #4f46e5;
+        }
+
+        .section-name {
+            color: #e5e7eb;
+        }
+
+        .download-btn {
+            padding: 0.5rem 1rem;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .download-icon {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .formats {
+                flex-wrap: wrap;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+     <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/img/download.png') }}">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="report-meta">
+        <h1>Detailed Analysis Report</h1>
+        </div>
+
+        <div class="report-meta">
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <div class="meta-label">File Name
+                        <div class="meta-value">{{ audio_path }}</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Analysis Date
+                        <div class="meta-value">{{today_date}}</div>
+                    </div>
+                </div>
+           
+                <div class="meta-item">
+                    <div class="meta-label">Result
+                        <div class="meta-value">{{detection_message}}</div>
+                    </div>
+                </div>
+
+                <div class="meta-item">
+                    <div class="meta-label">Probability in %
+                        <div class="meta-value">{{percentage}}</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                <div class="preview-content">
+                    <br>
+                    <h2>Executive Summary</h2>
+                    <br>
+                    {% if detection_message == "Detection Result: Faje" %}
+                    <p>The analysis has determined that the audio file {{audio_name}} is likely to be a deepfake. The following indicators were found:</p>
+                    <ul style="list-style-type: square; padding-left: 1.5rem;">
+                        <li>Inconsistent frequency patterns</li>
+                        <li>Artificial voice artifacts</li>
+                        <li>Unnatural speech pauses</li>
+                    </ul>
+                    {% else %}
+                    <p>The analysis has determined that the audio file {{audio_name}}  is likely to be genuine. The following indicators were found:</p>
+                    <ul  style="list-style-type: square; padding-left: 1.5rem;">
+                        <li>Consistent frequency patterns</li>
+                        <li>Natural voice characteristics</li>
+                        <li>Normal speech pauses</li>
+                    </ul>
+                    {% endif %}
+                    <br>
+                    <h3>Technical Analysis</h3>
+                    <img src="{{ url_for('static', filename='melspectrogram.png', _external=True) }}" alt="Spectrogram">
+                    <p>Time duration: {{execution_time}} seconds</p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

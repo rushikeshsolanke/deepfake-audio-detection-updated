@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Deepfake Audio Detection</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+        background-color: #000000;
+      }
+      .background {
+        background-image: url("/placeholder.svg?height=1080&width=1920");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: brightness(0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        padding: 20px 0;
+      }
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+      }
+      nav ul li {
+        margin-left: 20px;
+      }
+      nav ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      nav ul li a:hover {
+        color: #4caf50;
+      }
+      main {
+        padding: 40px 0;
+      }
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .about-section {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+      }
+      .about-section h2 {
+        font-size: 24px;
+        color: #4caf50;
+        margin-bottom: 20px;
+      }
+      .about-section p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .team-section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 40px;
+        background-color: black;
+        flex-wrap: wrap;
+      }
+
+      .team-member {
+        text-align: center;
+        color: white;
+        margin: 20px;
+      }
+
+      .team-member img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 3px solid white;
+      }
+
+      .team-member h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .team-member p {
+        font-size: 14px;
+        color: #cccccc;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #4caf50;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s;
+      }
+      .cta-button:hover {
+        background-color: #45a049;
+      }
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      @media (max-width: 768px) {
+        .team-member {
+          flex-basis: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('features')}}">Features</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+            {% if 'username' in session %}
+
+            <li><span>Welcome, {{ session['username'] }}!</span></li>
+
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>About Deepfake Audio Detection</h1>
+        <section class="about-section">
+          <h2>Our Mission</h2>
+          <p>
+            At Deepfake Audio Detection, our mission is to safeguard the
+            integrity of digital audio content in an era where technology can be
+            used to manipulate and deceive. We are committed to developing
+            cutting-edge AI-powered solutions that can accurately detect and
+            flag deepfake audio, empowering individuals and organizations to
+            make informed decisions about the content they encounter.
+          </p>
+        </section>
+        <section class="about-section">
+          <h2>Our Story</h2>
+          <p>
+            Launched in 2024 by our group from Matoshri College of Engineering
+            and Research Centre, Nashik. The AI specialists and cybersecurity
+            professionals, Deepfake Audio Detection was created in response to
+            the rapid rise of powerful audio manipulation tools. As deepfake
+            technology grew in complexity and availability, we saw the critical
+            need for reliable detection methods to combat misinformation, fraud,
+            and malicious use.
+          </p>
+          <p>
+            Over the years, we've collaborated with leading academic
+            institutions, media organizations, and tech companies to refine our
+            algorithms and expand our database of audio samples. Today, our
+            platform stands as a beacon of trust in the digital audio landscape,
+            serving clients across various sectors including journalism, law
+            enforcement, and entertainment.
+          </p>
+        </section>
+        <section class="about-section">
+          <h2>Our Team</h2>
+          <div class="team-section">
+            <div class="team-member">
+              <img src="../static/assets/img/r.jpeg" alt="Rushikesh " />
+              <h3>Rushikesh Solanke</h3>
+            </div>
+            <div class="team-member">
+              <img src="../static/assets/img/h.jpeg" alt="Harshada" />
+              <h3>Harshada Vibhandik</h3>
+            </div>
+            <div class="team-member">
+              <img src="../static/assets/img/v.png" alt="Vishal " />
+              <h3>Vishal Devre</h3>
+            </div>
+            <div class="team-member">
+              <img src="../static/assets/img/a.png" alt="Ashish" />
+              <h3>Ashish Dudhate</h3>
+            </div>
+          </div>
+        </section>
+        <section class="cta-section">
+          <a href="{{url_for('register')}}" class="cta-button"
+            >Join Us in the Fight Against Deepfakes</a
+          >
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

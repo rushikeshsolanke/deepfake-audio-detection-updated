@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Audio Detection - Features</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-color: #000000;
+        }
+        .background {
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: brightness(0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            padding: 20px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .feature {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+        .feature p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .feature-image {
+            flex: 0 0 200px;
+            margin-left: 30px;
+        }
+        .feature-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        @media (max-width: 768px) {
+            .feature {
+                flex-direction: column;
+            }
+            .feature-image {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+        }
+    </style>
+     <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/img/download.png') }}">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('features')}}">Features</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    {% if 'username' in session %}
+                       
+                    <li><span>Welcome, {{ session['username'] }}!</span></li>
+                        
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>Our Features</h1>
+            <div class="feature">
+                <div class="feature-content">
+                    <h2>Advanced AI Detection</h2>
+                    <p>Our cutting-edge AI algorithms are trained on vast datasets of both authentic and deepfake audio samples. This allows our system to detect even the most sophisticated audio manipulations with high accuracy. We continuously update our models to stay ahead of emerging deepfake techniques.</p>
+                </div>
+                
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h2>Real-Time Analysis</h2>
+                    <p>Don't wait for results. Our system provides instant feedback on audio authenticity. Upload your audio file or provide a link, and within seconds, you'll receive a detailed analysis. This real-time capability is crucial for time-sensitive situations like verifying breaking news or emergency communications.</p>
+                </div>
+                
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h2>Comprehensive Reports</h2>
+                    <p>Get more than just a yes or no answer. Our detailed reports provide insights into why an audio file is flagged as potentially manipulated. We highlight specific sections of the audio that show signs of tampering and provide confidence scores for our analysis.</p>
+                </div>
+                
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h2>User-Friendly Interface</h2>
+                    <p>No technical expertise required. Our intuitive interface makes it easy for anyone to use our deepfake detection tools. Whether you're a journalist, researcher, or concerned citizen, you can navigate our platform with ease and get the answers you need quickly.</p>
+                </div>
+                
+            </div>
+            
+            </div>
+            <div class="cta-section">
+                <a href="{{url_for('upload')}}" class="cta-button">Start Detecting Now</a>
+            </div>
+        </main>
+    </div>
+    <footer>
+   </footer>
+</body>
+</html>

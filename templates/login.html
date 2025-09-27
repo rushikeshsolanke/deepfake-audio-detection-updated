@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Audio Detection - Login</title>
+    <style>
+        body {
+            background-image: url("{{url_for('static', filename='assets/img/deepfake1.jpeg')}}");
+            backdrop-filter: blur(5px);
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+    
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+        .background {
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: brightness(0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .login-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .home{
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-top: 20px;
+        }
+        .flash-messages {
+            margin: 1em;
+            padding: 1em;
+            border-radius: 5px;
+        }
+        .flash-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .flash-danger {
+            background-color: #f44336;
+            color: white;
+        }
+        .flash-warning {
+            background-color: #ff9800;
+            color: white;
+        }
+    </style>
+     <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/img/download.png') }}">
+</head>
+<body>
+
+    <div class="background"></div>
+    <a class="home" href="{{url_for('home')}}">Home</a>
+    <div class="container">
+        <div class="login-box">
+            <div class="flash-messages">
+                
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="flash-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+            </div>  
+            <h1>Deepfake Audio Detection</h1>
+            <form action="{{url_for('login')}}" method="post">
+                
+                
+                <input type="text" id="username" name="username" placeholder="Username" required>
+             
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                
+                <input type="submit" value="Login">
+            </form>
+            <div class="links">
+                <!--<a href="#">Forgot Password?</a>-->
+                <p>if you don't have an account then </p>
+                <a href="{{url_for('register')}}">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
