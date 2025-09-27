@@ -1,0 +1,220 @@
+/* Base styles from login.html */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.login-box {
+    padding: 40px;
+    width: 50%;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+p {
+    color: #555;
+}
+h2 {
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2b2e4a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.login-btn:hover {
+    background-color: #41446f;
+}
+.forgot-password {
+    margin-top: 10px;
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.image-box {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #888;
+    position: absolute;
+    bottom: 0;
+}
+footer a {
+    color: #2b2e4a;
+    text-decoration: none;
+}
+
+/* Base styles from home.html */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+nav {
+    background-color: #2b2e4a;
+    padding: 15px;
+    text-align: center;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: #f9f9f9;
+    text-decoration: underline;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-image: url('https://motionarray.imgix.net/1582642-7GZXrIWz44-high_0011.jpg?w=660&q=60&fit=max&auto=format');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+.welcome-msg {
+    flex: 1;
+    font-size: 2rem;
+    margin-right: 20px;
+}
+.image-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.cards-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+.card {
+    background-color: #2b2e4a;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    color: #888;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: #2b2e4a;
+    text-decoration: none;
+}
+.upload-section {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.upload-section h2 {
+    margin-bottom: 10px;
+}
+.upload-section input[type="file"] {
+    margin-top: 20px;
+}
+.upload-section button {
+    background-color: #2b2e4a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.upload-section button:hover {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
